@@ -1,5 +1,6 @@
 ﻿module Lexer
 open Operations
+open Functions
 open Tree
 
 let rec finFirsCloseBracket (index:int) (bracketsCount) (str:string) =
@@ -20,5 +21,9 @@ let rec lexer (line:string) : Tree =
     if isOpr then 
         printfn $"{line[..id - 1]} - {line[id]} - {line[id + 1..]}"
         BinBranch(fn, lexer(line[..id - 1]), lexer(line[id + 1..]))
-    elif line[0] = '(' then lexer(openingBracket line)
+    elif line[0] = '(' then lexer(openingBracket line) else
+
+    let (isFunc, length, fn) = findFunc line
+
+    if isFunc then UnoBranch(fn, lexer(line[length..]))
     else Leaf (double line)
