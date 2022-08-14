@@ -7,7 +7,7 @@ let rec cal tree =
     | UnoBranch (fn, child) -> fn (cal child)
     | BinBranch (fn, childLeft, childRight) -> fn (cal childLeft) (cal childRight)
 
-"2+2*2"
+"18*(1/9)^2*sin(60)-20*(1/9)"
 |> lexer
 |> cal
 |> printfn "%f"
