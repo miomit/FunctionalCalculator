@@ -3,7 +3,8 @@
 let operationsList = [('-', (-))
                       ('+', (+))
                       ('/', (/))
-                      ('*', (*))]
+                      ('*', (*))
+                      ('^', (fun x y -> x**y))]
 
 let getOperationSymvol (s, _) = s
 let getOperationFunction (_, f) : double->double->double = f
